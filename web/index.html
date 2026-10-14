@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgentLoom · 受约束的工具调用 Agent 工作台</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">AL</span>
+    <div>
+      <h1>AgentLoom</h1>
+      <p class="sub">受约束的工具调用 Agent · 预算 · 护栏 · 引用校验 · 可观测</p>
+    </div>
+  </div>
+  <div class="status">
+    <span class="pill" id="backend-pill">连接中…</span>
+    <span class="pill" id="doc-pill">—</span>
+  </div>
+</header>
+
+<main class="layout">
+
+  <section class="col col-main">
+    <div class="card">
+      <h2>提问</h2>
+      <div class="row">
+        <input id="question" type="text" placeholder="例如：订单 A1024 现在是什么状态？" autocomplete="off">
+        <label class="chk"><input type="checkbox" id="use-stream" checked> 流式</label>
+        <button id="ask" class="primary">发送</button>
+      </div>
+      <div class="examples">
+        <span>试试：</span>
+        <button class="ex" data-q="订单 A1024 现在是什么状态？">查订单</button>
+        <button class="ex" data-q="SKU-1002 需要补货吗？">查库存</button>
+        <button class="ex" data-q="工具调用为什么要做参数校验？">问知识库</button>
+        <button class="ex" data-q="帮我记录一下待办：检查 SKU-1002 库存">写操作（需确认）</button>
+        <button class="ex" data-q="红烧肉的做法是什么？">无答案问题</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>答案 <span class="hint" id="answer-meta"></span></h2>
+      <div id="answer" class="answer empty">还没有提问。</div>
+      <div id="citations" class="citations"></div>
+    </div>
+
+    <div class="card">
+      <h2>执行轨迹 <span class="hint">每一步都可核对</span></h2>
+      <ol id="trace" class="trace"><li class="empty">暂无轨迹</li></ol>
+    </div>
+  </section>
+
+  <aside class="col col-side">
+
+    <div class="card">
+      <h2>运行指标</h2>
+      <div id="metrics" class="metrics"></div>
+    </div>
+
+    <div class="card">
+      <h2>待确认写操作 <span class="hint" id="approval-count"></span></h2>
+      <div id="approvals" class="approvals"><p class="empty">没有待确认的请求</p></div>
+    </div>
+
+    <div class="card">
+      <h2>已创建任务</h2>
+      <ul id="tasks" class="tasks"><li class="empty">暂无任务</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>工具白名单 <span class="hint" id="tool-count"></span></h2>
+      <ul id="tools" class="tools"></ul>
+    </div>
+
+  </aside>
+
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

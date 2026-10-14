@@ -1,0 +1,18 @@
+services:
+  agentloom:
+    build: .
+    ports:
+      - "127.0.0.1:8791:8791"
+    environment:
+      AGENTLOOM_MODEL_BACKEND: "scripted"
+      # 接真实模型时取消注释：
+      # OPENAI_API_KEY: "sk-..."
+      # OPENAI_BASE_URL: "https://api.deepseek.com/v1"
+      # OPENAI_MODEL: "deepseek-chat"
+      AGENTLOOM_TRACE_DB: "/data/traces.db"
+    volumes:
+      - agentloom-data:/data
+    restart: unless-stopped
+
+volumes:
+  agentloom-data:

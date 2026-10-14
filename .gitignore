@@ -1,0 +1,30 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 运行时数据不进仓库
+runtime/
+*.db
+*.db-wal
+*.db-shm
+eval/report.json
+
+# 本机配置
+.env
+.env.local
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# 调试残留
+debug_*.py
+debug_*.json

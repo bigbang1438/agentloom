@@ -1,0 +1,1 @@
+{"documents": [{"filename": "d.md", "path": "d.md"}], "questions": [{"question": "q", "gold_filename": "d.md", "gold_anchor": "这段文字根本不存在", "answerable": true}]}
